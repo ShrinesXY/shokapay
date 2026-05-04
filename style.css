@@ -1332,15 +1332,3 @@ a { text-decoration: none; color: inherit; }
   h1 { font-size: 2rem; }
   .hero-badge { font-size: 0.72rem; }
 }
-
-/* ── LOGO SVG NAV ── */
-.nav-logo-svg {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  line-height: 0;
-  transition: opacity 0.2s;
-}
-.nav-logo-svg:hover { opacity: 0.85; }
-.nav-logo-svg svg { display: block; }
-
