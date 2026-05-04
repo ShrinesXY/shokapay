@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cara Pembayaran — ShokaPay</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo-svg">
+        <svg width="160" height="40" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shoka-nav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3B82F6" />
+              <stop offset="100%" stop-color="#10B981" />
+            </linearGradient>
+            <filter id="nav-shadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B82F6" flood-opacity="0.25"/>
+            </filter>
+          </defs>
+          <circle cx="40" cy="40" r="28" fill="url(#shoka-nav-grad)" filter="url(#nav-shadow)" />
+          <path d="M42 20 L27 43 H40 L35 60 L54 38 H41 Z" fill="#ffffff" />
+          <text x="80" y="53" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="44" letter-spacing="-2">
+            <tspan font-weight="800" fill="#0f172a">shoka</tspan><tspan font-weight="400" fill="#3b82f6">pay</tspan>
+          </text>
+        </svg>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Beranda</a>
+        <a href="metode.html" class="nav-link">Metode</a>
+        <a href="cara.html" class="nav-link active">Cara Bayar</a>
+        <a href="tentang.html" class="nav-link">Tentang</a>
+        <a href="kontak.html" class="nav-link">Kontak</a>
+      </div>
+      <a href="metode.html" class="nav-cta">Bayar Sekarang</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-orb hero-orb-1" style="opacity:0.4;"></div>
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="section-tag">Panduan Pembayaran</div>
+        <h1 class="page-title">Cara Bayar yang<br><span class="gradient-text">Mudah & Jelas</span></h1>
+        <p class="page-sub">Ikuti langkah-langkah berikut untuk menyelesaikan pembayaran dengan cepat dan aman.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE TABS -->
+  <section class="guide-section">
+    <div class="container">
+      <div class="guide-tabs">
+        <button class="guide-tab active" data-tab="qris">QRIS</button>
+        <button class="guide-tab" data-tab="dana-gopay">DANA & GoPay</button>
+        <button class="guide-tab" data-tab="pulsa">Pulsa</button>
+      </div>
+
+      <!-- QRIS STEPS -->
+      <div class="guide-content active" id="tab-qris">
+        <div class="guide-header">
+          <div class="guide-icon qris-icon-large">QR</div>
+          <div>
+            <h2>Pembayaran via QRIS</h2>
+            <p>Cocok untuk semua e-wallet dan mobile banking yang mendukung QRIS</p>
+          </div>
+        </div>
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>Buka Aplikasi E-Wallet atau M-Banking</h3>
+              <p>Buka aplikasi dompet digital atau mobile banking yang kamu gunakan. QRIS didukung oleh semua platform seperti DANA, GoPay, OVO, ShopeePay, LinkAja, dan semua mobile banking.</p>
+            </div>
+            <div class="step-icon">📱</div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>Pilih Fitur Scan/Bayar QRIS</h3>
+              <p>Temukan tombol "Scan", "Bayar", atau "QRIS" di halaman utama aplikasimu. Biasanya ada ikon kamera atau QR di bagian bawah atau atas layar.</p>
+            </div>
+            <div class="step-icon">🔍</div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>Scan Kode QRIS ShokaPay</h3>
+              <p>Arahkan kamera ke kode QRIS yang tersedia di halaman <a href="metode.html" style="color:var(--blue);">Metode Pembayaran</a>. Atau download QRIS-nya terlebih dahulu lalu upload dari galeri.</p>
+            </div>
+            <div class="step-icon">📷</div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <h3>Masukkan Nominal Pembayaran</h3>
+              <p>Setelah QR berhasil terbaca, masukkan jumlah yang ingin dibayar sesuai tagihan atau kesepakatan. Periksa kembali nama merchant (ShokaPay) dan nominal sebelum lanjut.</p>
+            </div>
+            <div class="step-icon">💰</div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-number">05</div>
+            <div class="step-content">
+              <h3>Konfirmasi & Selesai</h3>
+              <p>Konfirmasi pembayaran dengan PIN atau biometrik. Setelah berhasil, kamu akan mendapat notifikasi sukses. Screenshot bukti bayar dan kirim ke admin via WhatsApp.</p>
+            </div>
+            <div class="step-icon">✅</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DANA & GOPAY STEPS -->
+      <div class="guide-content" id="tab-dana-gopay">
+        <div class="guide-header">
+          <div class="guide-icon dana-icon-large">💙</div>
+          <div>
+            <h2>Pembayaran via DANA & GoPay</h2>
+            <p>Transfer langsung ke nomor DANA atau GoPay ShokaPay</p>
+          </div>
+        </div>
+
+        <div class="guide-split">
+          <div class="guide-split-col">
+            <h3 class="split-title dana-title">Via DANA</h3>
+            <div class="steps-container compact">
+              <div class="step-card compact-step">
+                <div class="step-number small">01</div>
+                <div class="step-content">
+                  <h3>Buka Aplikasi DANA</h3>
+                  <p>Buka aplikasi DANA di smartphone kamu dan pastikan sudah login ke akun yang valid.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">02</div>
+                <div class="step-content">
+                  <h3>Pilih "Kirim Uang"</h3>
+                  <p>Tap tombol "Kirim" atau "Kirim Uang" dari halaman utama DANA.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">03</div>
+                <div class="step-content">
+                  <h3>Masukkan Nomor DANA</h3>
+                  <p>Ketik atau paste nomor tujuan: <strong>085213859916</strong></p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">04</div>
+                <div class="step-content">
+                  <h3>Masukkan Nominal & Kirim</h3>
+                  <p>Isi jumlah, tambah catatan jika perlu, lalu konfirmasi dengan PIN DANA.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-split-divider"></div>
+
+          <div class="guide-split-col">
+            <h3 class="split-title gopay-title">Via GoPay</h3>
+            <div class="steps-container compact">
+              <div class="step-card compact-step">
+                <div class="step-number small">01</div>
+                <div class="step-content">
+                  <h3>Buka Aplikasi Gojek</h3>
+                  <p>Buka aplikasi Gojek dan masuk ke menu GoPay di bagian bawah layar.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">02</div>
+                <div class="step-content">
+                  <h3>Pilih "Kirim"</h3>
+                  <p>Di halaman GoPay, tap "Kirim" untuk memulai transfer ke nomor lain.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">03</div>
+                <div class="step-content">
+                  <h3>Masukkan Nomor GoPay</h3>
+                  <p>Ketik nomor tujuan: <strong>085213859916</strong> — pastikan nama muncul sebagai ShokaPay.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">04</div>
+                <div class="step-content">
+                  <h3>Konfirmasi & Kirim</h3>
+                  <p>Masukkan nominal, verifikasi dengan PIN GoPay, dan transfer selesai.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PULSA STEPS -->
+      <div class="guide-content" id="tab-pulsa">
+        <div class="guide-header">
+          <div class="guide-icon pulsa-icon-large">📡</div>
+          <div>
+            <h2>Pembayaran via Pulsa</h2>
+            <p>Transfer pulsa dari nomor Telkomsel atau Indosat kamu</p>
+          </div>
+        </div>
+
+        <div class="guide-split">
+          <div class="guide-split-col">
+            <h3 class="split-title tsel-title">Pulsa Telkomsel</h3>
+            <div class="number-highlight red-highlight">085213859916</div>
+            <div class="steps-container compact">
+              <div class="step-card compact-step">
+                <div class="step-number small">01</div>
+                <div class="step-content">
+                  <h3>Pastikan Pulsa Cukup</h3>
+                  <p>Cek saldo pulsamu, pastikan minimal sama dengan nominal yang ingin dikirim + fee.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">02</div>
+                <div class="step-content">
+                  <h3>Gunakan MyTelkomsel atau *858#</h3>
+                  <p>Buka aplikasi MyTelkomsel atau dial <strong>*858#</strong> dari nomor Telkomselmu.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">03</div>
+                <div class="step-content">
+                  <h3>Pilih "Transfer Pulsa"</h3>
+                  <p>Pilih menu Transfer Pulsa dan masukkan nomor tujuan <strong>085213859916</strong>.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">04</div>
+                <div class="step-content">
+                  <h3>Masukkan Nominal & Konfirmasi</h3>
+                  <p>Isi nominal pulsa yang ingin dikirim, konfirmasi dan selesaikan proses transfer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-split-divider"></div>
+
+          <div class="guide-split-col">
+            <h3 class="split-title isat-title">Pulsa Indosat</h3>
+            <div class="number-highlight orange-highlight">6285761987935</div>
+            <div class="steps-container compact">
+              <div class="step-card compact-step">
+                <div class="step-number small">01</div>
+                <div class="step-content">
+                  <h3>Pastikan Pulsa Cukup</h3>
+                  <p>Cek saldo pulsamu, pastikan mencukupi nominal yang akan ditransfer.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">02</div>
+                <div class="step-content">
+                  <h3>Gunakan myIM3 atau *123#</h3>
+                  <p>Buka aplikasi myIM3 atau dial <strong>*123#</strong> dari nomor Indosatmu.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">03</div>
+                <div class="step-content">
+                  <h3>Pilih "Transfer Pulsa"</h3>
+                  <p>Navigasi ke menu Transfer Pulsa dan masukkan nomor <strong>6285761987935</strong>.</p>
+                </div>
+              </div>
+              <div class="step-connector short"></div>
+              <div class="step-card compact-step">
+                <div class="step-number small">04</div>
+                <div class="step-content">
+                  <h3>Masukkan Nominal & Konfirmasi</h3>
+                  <p>Masukkan jumlah pulsa, ikuti instruksi dan selesaikan transfer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">FAQ</div>
+        <h2 class="section-title">Pertanyaan yang<br>Sering Ditanyakan</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            Berapa lama proses konfirmasi pembayaran?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Konfirmasi pembayaran diproses dalam waktu kurang dari 5 menit setelah kamu mengirimkan bukti transfer ke admin via WhatsApp. Pastikan mengirimkan screenshot yang jelas.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Apakah ada biaya tambahan atau fee?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Tidak ada biaya tambahan dari pihak ShokaPay. Namun, beberapa metode seperti transfer pulsa mungkin dikenakan biaya kecil dari operator selulermu. Silakan cek ketentuan operatormu.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Apa yang harus dilakukan jika pembayaran gagal?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Jika pembayaran gagal, hubungi admin kami via WhatsApp dengan menyertakan detail transaksi. Tim kami akan membantu menyelesaikan masalah dalam waktu singkat.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Apakah semua metode pembayaran tersedia 24 jam?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>QRIS, DANA, dan GoPay tersedia 24/7. Untuk konfirmasi dari admin, kami beroperasi dari pukul 08.00 - 23.00 WIB. Di luar jam tersebut, konfirmasi akan diproses saat admin online.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Berapa nominal minimum pembayaran?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Untuk DANA dan GoPay tidak ada minimum khusus dari kami (ikuti ketentuan platform). Untuk pulsa, minimum transfer biasanya Rp 5.000 tergantung kebijakan operator.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Apakah data saya aman?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Ya, keamanan data pengguna adalah prioritas utama kami. Kami tidak menyimpan data kartu atau kredensial apapun. Semua transaksi diproses langsung melalui platform resmi masing-masing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo-svg">
+        <svg width="160" height="40" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shoka-nav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3B82F6" />
+              <stop offset="100%" stop-color="#10B981" />
+            </linearGradient>
+            <filter id="nav-shadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B82F6" flood-opacity="0.25"/>
+            </filter>
+          </defs>
+          <circle cx="40" cy="40" r="28" fill="url(#shoka-nav-grad)" filter="url(#nav-shadow)" />
+          <path d="M42 20 L27 43 H40 L35 60 L54 38 H41 Z" fill="#ffffff" />
+          <text x="80" y="53" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="44" letter-spacing="-2">
+            <tspan font-weight="800" fill="#0f172a">shoka</tspan><tspan font-weight="400" fill="#3b82f6">pay</tspan>
+          </text>
+        </svg>
+      </a>
+          <p>Platform pembayaran digital yang aman, cepat, dan terpercaya.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Layanan</h4>
+          <a href="metode.html">QRIS</a>
+          <a href="metode.html">DANA</a>
+          <a href="metode.html">GoPay</a>
+          <a href="metode.html">Pulsa</a>
+        </div>
+        <div class="footer-col">
+          <h4>Panduan</h4>
+          <a href="cara.html">Cara Bayar QRIS</a>
+          <a href="cara.html">Cara Bayar DANA</a>
+          <a href="cara.html">Cara Bayar Pulsa</a>
+        </div>
+        <div class="footer-col">
+          <h4>Perusahaan</h4>
+          <a href="tentang.html">Tentang Kami</a>
+          <a href="kontak.html">Kontak</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 ShokaPay. Hak cipta dilindungi.</span>
+        <span>Dibuat dengan ❤️ di Indonesia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
