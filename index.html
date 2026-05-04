@@ -1,30 +1,159 @@
 <!DOCTYPE html>
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  ShokaPay — Beranda                                      ║
+     ║  Halaman utama ShokaPay                                   ║
+     ║  © 2025 ShokaPay · shokapay.vercel.app                  ║
+     ╚══════════════════════════════════════════════════════════╝ -->
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="ShokaPay adalah platform pembayaran digital Indonesia. Bayar via QRIS, DANA, GoPay, Pulsa Telkomsel & Indosat. Proses instan, aman, dan terpercaya.">
+  <meta name="keywords" content="pembayaran digital, QRIS, DANA, GoPay, pulsa, transfer uang, ShokaPay, bayar online Indonesia">
+  <meta name="author" content="ShokaPay">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shokapay.vercel.app/">
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ShokaPay">
+  <meta property="og:title" content="ShokaPay — Pembayaran Digital Cepat & Aman">
+  <meta property="og:description" content="ShokaPay adalah platform pembayaran digital Indonesia. Bayar via QRIS, DANA, GoPay, Pulsa Telkomsel & Indosat. Proses instan, aman, dan terpercaya.">
+  <meta property="og:url" content="https://shokapay.vercel.app/">
+  <meta property="og:image" content="https://shokapay.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="id_ID">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ShokaPay — Pembayaran Digital Cepat & Aman">
+  <meta name="twitter:description" content="ShokaPay adalah platform pembayaran digital Indonesia. Bayar via QRIS, DANA, GoPay, Pulsa Telkomsel & Indosat. Proses instan, aman, dan terpercaya.">
+  <meta name="twitter:image" content="https://shokapay.vercel.app/og-image.png">
+
+  <!-- Mobile & Theme -->
+  <meta name="theme-color" content="#3B82F6">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ShokaPay">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ShokaPay — Pembayaran Digital Cepat & Aman</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* PAGE LOADER */
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: loaderPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes loaderPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.97); }
+    }
+    .loader-bar-wrap {
+      width: 160px;
+      height: 3px;
+      background: #E2E8F0;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .loader-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #3B82F6, #10B981);
+      border-radius: 99px;
+      animation: loaderProgress 0.9s ease forwards;
+    }
+    @keyframes loaderProgress {
+      0%   { width: 0%; }
+      60%  { width: 75%; }
+      100% { width: 100%; }
+    }
+    .loader-text {
+      font-family: system-ui, sans-serif;
+      font-size: 0.78rem;
+      color: #94A3B8;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+  </style>
 </head>
 <body>
+  <!-- ═══ PAGE LOADER ═══ -->
+  <div id="page-loader">
+    <div class="loader-logo">
+      <svg width="140" height="36" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="loader-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3B82F6"/>
+            <stop offset="100%" stop-color="#10B981"/>
+          </linearGradient>
+        </defs>
+        <circle cx="40" cy="40" r="28" fill="url(#loader-grad)"/>
+        <path d="M42 20 L27 43 H40 L35 60 L54 38 H41 Z" fill="#ffffff"/>
+        <text x="80" y="53" font-family="system-ui,-apple-system,sans-serif" font-size="44" letter-spacing="-2">
+          <tspan font-weight="800" fill="#0f172a">shoka</tspan><tspan font-weight="400" fill="#3b82f6">pay</tspan>
+        </text>
+      </svg>
+    </div>
+    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    <div class="loader-text">Memuat halaman...</div>
+  </div>
+
+
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <div class="logo-mark">S</div>
-        <span>ShokaPay</span>
+      <a href="/" class="nav-logo-svg">
+        <svg width="160" height="40" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shoka-nav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3B82F6" />
+              <stop offset="100%" stop-color="#10B981" />
+            </linearGradient>
+            <filter id="nav-shadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B82F6" flood-opacity="0.25"/>
+            </filter>
+          </defs>
+          <circle cx="40" cy="40" r="28" fill="url(#shoka-nav-grad)" filter="url(#nav-shadow)" />
+          <path d="M42 20 L27 43 H40 L35 60 L54 38 H41 Z" fill="#ffffff" />
+          <text x="80" y="53" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="44" letter-spacing="-2">
+            <tspan font-weight="800" fill="#0f172a">shoka</tspan><tspan font-weight="400" fill="#3b82f6">pay</tspan>
+          </text>
+        </svg>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link active">Beranda</a>
-        <a href="metode.html" class="nav-link">Metode</a>
-        <a href="cara.html" class="nav-link">Cara Bayar</a>
-        <a href="tentang.html" class="nav-link">Tentang</a>
-        <a href="kontak.html" class="nav-link">Kontak</a>
+        <a href="/" class="nav-link active">Beranda</a>
+        <a href="/metode" class="nav-link">Metode</a>
+        <a href="/cara" class="nav-link">Cara Bayar</a>
+        <a href="/tentang" class="nav-link">Tentang</a>
+        <a href="/kontak" class="nav-link">Kontak</a>
       </div>
-      <a href="metode.html" class="nav-cta">Bayar Sekarang</a>
+      <a href="/metode" class="nav-cta">Bayar Sekarang</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -48,8 +177,8 @@
         </h1>
         <p class="hero-sub">Platform pembayaran modern yang mendukung QRIS, DANA, GoPay, dan pulsa. Transaksi selesai dalam hitungan detik, tanpa ribet.</p>
         <div class="hero-actions">
-          <a href="metode.html" class="btn-primary">Mulai Pembayaran <span class="btn-arrow">→</span></a>
-          <a href="cara.html" class="btn-ghost">Lihat Panduan</a>
+          <a href="/metode" class="btn-primary">Mulai Pembayaran <span class="btn-arrow">→</span></a>
+          <a href="/cara" class="btn-ghost">Lihat Panduan</a>
         </div>
         <div class="hero-trust">
           <div class="trust-item">
@@ -188,46 +317,43 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials-section">
+  <!-- ═══ TESTIMONIALS — Edit data di TESTIMONIALS_DATA di app.js ═══ -->
+  <section class="testimonials-section" id="testimoni">
     <div class="container">
       <div class="section-header">
         <div class="section-tag">Testimoni</div>
         <h2 class="section-title">Dipercaya ribuan<br>pengguna aktif</h2>
+        <p class="section-sub">Kata mereka tentang pengalaman bertransaksi bersama ShokaPay.</p>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"Prosesnya sangat cepat! Top up lewat DANA langsung masuk dalam hitungan detik. Recommended banget!"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">AR</div>
-            <div>
-              <div class="author-name">Andi Rizky</div>
-              <div class="author-role">Pengguna DANA</div>
-            </div>
-          </div>
+
+      <!-- Testimonial Carousel -->
+      <div class="testi-carousel-wrap">
+        <div class="testi-track" id="testiTrack">
+          <!-- Kartu testimoni di-render otomatis dari TESTIMONIALS_DATA di app.js -->
         </div>
-        <div class="testimonial-card testimonial-featured">
-          <div class="stars">★★★★★</div>
-          <p>"ShokaPay jadi pilihan utama saya. QRIS-nya gampang banget, scan langsung selesai. Admin juga responsif!"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">SN</div>
-            <div>
-              <div class="author-name">Sari Novita</div>
-              <div class="author-role">Pengguna QRIS</div>
-            </div>
-          </div>
+        <div class="testi-nav">
+          <button class="testi-btn" id="testiBtnPrev" aria-label="Sebelumnya">&#8592;</button>
+          <div class="testi-dots" id="testiDots"></div>
+          <button class="testi-btn" id="testiBtnNext" aria-label="Berikutnya">&#8594;</button>
         </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"Beli pulsa Telkomsel di sini paling gampang. Nomor langsung tersalin, prosesnya nggak ribet sama sekali."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">BW</div>
-            <div>
-              <div class="author-name">Bagus Wicaksono</div>
-              <div class="author-role">Pemakai Pulsa</div>
-            </div>
-          </div>
+      </div>
+
+      <!-- Summary bar -->
+      <div class="testi-summary">
+        <div class="testi-summary-item">
+          <span class="testi-summary-stars">★★★★★</span>
+          <span class="testi-summary-score">5.0</span>
+          <span class="testi-summary-label">Rating rata-rata</span>
+        </div>
+        <div class="testi-summary-divider"></div>
+        <div class="testi-summary-item">
+          <span class="testi-summary-num" id="testiCount">0</span>
+          <span class="testi-summary-label">Ulasan pengguna</span>
+        </div>
+        <div class="testi-summary-divider"></div>
+        <div class="testi-summary-item">
+          <span class="testi-summary-num">100%</span>
+          <span class="testi-summary-label">Puas dengan layanan</span>
         </div>
       </div>
     </div>
@@ -242,8 +368,8 @@
           <h2>Siap memulai transaksi?</h2>
           <p>Pilih metode pembayaran favoritmu dan selesaikan transaksi dalam hitungan detik.</p>
           <div class="cta-actions">
-            <a href="metode.html" class="btn-white">Lihat Metode Pembayaran</a>
-            <a href="kontak.html" class="btn-outline-white">Hubungi Admin</a>
+            <a href="/metode" class="btn-white">Lihat Metode Pembayaran</a>
+            <a href="/kontak" class="btn-outline-white">Hubungi Admin</a>
           </div>
         </div>
       </div>
@@ -255,10 +381,24 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <div class="logo-mark">S</div>
-            <span>ShokaPay</span>
-          </a>
+          <a href="/" class="nav-logo-svg">
+        <svg width="160" height="40" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shoka-nav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3B82F6" />
+              <stop offset="100%" stop-color="#10B981" />
+            </linearGradient>
+            <filter id="nav-shadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B82F6" flood-opacity="0.25"/>
+            </filter>
+          </defs>
+          <circle cx="40" cy="40" r="28" fill="url(#shoka-nav-grad)" filter="url(#nav-shadow)" />
+          <path d="M42 20 L27 43 H40 L35 60 L54 38 H41 Z" fill="#ffffff" />
+          <text x="80" y="53" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="44" letter-spacing="-2">
+            <tspan font-weight="800" fill="#0f172a">shoka</tspan><tspan font-weight="400" fill="#3b82f6">pay</tspan>
+          </text>
+        </svg>
+      </a>
           <p>Platform pembayaran digital yang aman, cepat, dan terpercaya untuk semua kebutuhan transaksimu.</p>
           <div class="social-links">
             <a href="#" class="social-link">WA</a>
@@ -268,22 +408,22 @@
         </div>
         <div class="footer-col">
           <h4>Layanan</h4>
-          <a href="metode.html">QRIS</a>
-          <a href="metode.html">DANA</a>
-          <a href="metode.html">GoPay</a>
-          <a href="metode.html">Pulsa</a>
+          <a href="/metode">QRIS</a>
+          <a href="/metode">DANA</a>
+          <a href="/metode">GoPay</a>
+          <a href="/metode">Pulsa</a>
         </div>
         <div class="footer-col">
           <h4>Panduan</h4>
-          <a href="cara.html">Cara Bayar QRIS</a>
-          <a href="cara.html">Cara Bayar DANA</a>
-          <a href="cara.html">Cara Bayar Pulsa</a>
-          <a href="cara.html">FAQ</a>
+          <a href="/cara">Cara Bayar QRIS</a>
+          <a href="/cara">Cara Bayar DANA</a>
+          <a href="/cara">Cara Bayar Pulsa</a>
+          <a href="/cara">FAQ</a>
         </div>
         <div class="footer-col">
           <h4>Perusahaan</h4>
-          <a href="tentang.html">Tentang Kami</a>
-          <a href="kontak.html">Kontak</a>
+          <a href="/tentang">Tentang Kami</a>
+          <a href="/kontak">Kontak</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -294,5 +434,20 @@
   </footer>
 
   <script src="app.js"></script>
+
+  <script>
+    // Hide loader when page is ready
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('page-loader');
+      if (loader) {
+        setTimeout(() => loader.classList.add('hidden'), 300);
+      }
+    });
+    // Fallback: force hide after 2.5s
+    setTimeout(() => {
+      const loader = document.getElementById('page-loader');
+      if (loader) loader.classList.add('hidden');
+    }, 2500);
+  </script>
 </body>
 </html>
