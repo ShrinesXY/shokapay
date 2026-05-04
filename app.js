@@ -199,6 +199,8 @@ function initPageTransition() {
       href.startsWith('dana://') ||
       href.startsWith('gojek://') ||
       href.startsWith('https://wa.me') ||
+      href.startsWith('tel:') ||
+      href.startsWith('mailto:') ||
       link.target === '_blank'
     ) return;
 
@@ -214,14 +216,11 @@ function initPageTransition() {
 
 /* ── ACTIVE NAV HIGHLIGHT ── */
 function setActiveNav() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const path = window.location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.nav-link').forEach(link => {
-    const linkPage = link.getAttribute('href');
+    const linkHref = link.getAttribute('href').replace(/\/$/, '') || '/';
     link.classList.remove('active');
-    if (
-      linkPage === currentPage ||
-      (currentPage === '' && linkPage === 'index.html')
-    ) {
+    if (linkHref === path || (path === '' && linkHref === '/')) {
       link.classList.add('active');
     }
   });
@@ -277,3 +276,200 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardRipple();
 });
 
+/* ══════════════════════════════════════════════════════
+   TESTIMONIALS DATA ENGINE
+   ──────────────────────────────────────────────────────
+   Cara menambah testimoni baru:
+   1. Tambahkan objek baru di array TESTIMONIALS_DATA
+   2. Isi semua field sesuai contoh yang ada
+   3. Untuk foto: taruh file di assets/ lalu isi "photo": "assets/nama-file.jpg"
+      Kalau tidak ada foto, isi "photo": "" → otomatis pakai inisial nama
+   4. Untuk featured (card biru besar): "featured": true — max 1 featured
+   5. Save file, refresh browser
+══════════════════════════════════════════════════════ */
+
+const TESTIMONIALS_DATA = [
+  // ── TAMBAH / EDIT TESTIMONI DI SINI ──────────────────
+  {
+    name: "Andi Rizky",
+    role: "Mahasiswa",
+    method: "DANA",          // Label metode: DANA / GoPay / QRIS / Pulsa / dll
+    methodIcon: "💙",
+    stars: 5,
+    text: "Prosesnya sangat cepat! Top up lewat DANA langsung masuk dalam hitungan detik. Nggak pake lama, admin juga responsif banget. Recommended!",
+    photo: "",               // Kosongkan → pakai inisial. Isi path foto: "assets/andi.jpg"
+    featured: false,
+  },
+  {
+    name: "Sari Novita",
+    role: "Freelancer",
+    method: "QRIS",
+    methodIcon: "⚡",
+    stars: 5,
+    text: "ShokaPay jadi pilihan utama saya. QRIS-nya gampang banget, tinggal scan langsung selesai. Paling suka karena bisa pakai semua e-wallet!",
+    photo: "",
+    featured: true,          // Featured = card biru, tampil di tengah
+  },
+  {
+    name: "Bagus Wicaksono",
+    role: "Gamer",
+    method: "Pulsa Telkomsel",
+    methodIcon: "📱",
+    stars: 5,
+    text: "Beli pulsa Telkomsel di sini paling gampang. Nomor langsung tersalin, prosesnya nggak ribet sama sekali. Sudah langganan dari lama.",
+    photo: "",
+    featured: false,
+  },
+  {
+    name: "Dewi Rahayu",
+    role: "Ibu Rumah Tangga",
+    method: "GoPay",
+    methodIcon: "💚",
+    stars: 5,
+    text: "Awalnya bingung cara pakainya, tapi panduan di websitenya jelas banget. Sekarang sering pakai GoPay transfer di sini, cepat dan aman.",
+    photo: "",
+    featured: false,
+  },
+  {
+    name: "Reza Firmansyah",
+    role: "Pengusaha Online",
+    method: "QRIS",
+    methodIcon: "⚡",
+    stars: 5,
+    text: "Saya rutin pakai ShokaPay untuk keperluan bisnis. Proses konfirmasinya cepat dan admin selalu fast response. Sangat profesional!",
+    photo: "",
+    featured: false,
+  },
+  {
+    name: "Linda Kusuma",
+    role: "Content Creator",
+    method: "DANA",
+    methodIcon: "💙",
+    stars: 5,
+    text: "Transfer lewat DANA super gampang, tinggal klik tombol buka DANA langsung masuk aplikasinya. Fitur salin nomor juga ngebantu banget!",
+    photo: "",
+    featured: false,
+  },
+  // ── CONTOH DENGAN FOTO ──────────────────────────────
+  // {
+  //   name: "Nama Pengguna",
+  //   role: "Pekerjaan / Keterangan",
+  //   method: "GoPay",
+  //   methodIcon: "💚",
+  //   stars: 5,
+  //   text: "Tulis testimoni di sini. Usahakan 1-3 kalimat yang jujur dan spesifik.",
+  //   photo: "assets/foto-nama.jpg",   ← taruh foto di folder assets/
+  //   featured: false,
+  // },
+  // ────────────────────────────────────────────────────
+];
+
+/* ── TESTIMONIAL CAROUSEL ENGINE ── */
+function initTestimonials() {
+  const track = document.getElementById('testiTrack');
+  const dotsEl = document.getElementById('testiDots');
+  const countEl = document.getElementById('testiCount');
+  const btnPrev = document.getElementById('testiBtnPrev');
+  const btnNext = document.getElementById('testiBtnNext');
+  if (!track || !TESTIMONIALS_DATA.length) return;
+
+  // Update count
+  if (countEl) countEl.textContent = TESTIMONIALS_DATA.length + '+';
+
+  // Sort: featured first in rotation
+  const sorted = [...TESTIMONIALS_DATA].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+  // Render cards
+  track.innerHTML = sorted.map((t, i) => {
+    const initials = t.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    const avatarHtml = t.photo
+      ? `<img src="${t.photo}" alt="${t.name}" class="testi-avatar" onerror="this.outerHTML='<div class=testi-avatar-fallback>${initials}</div>'">`
+      : `<div class="testi-avatar-fallback">${initials}</div>`;
+    const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
+    return `
+      <div class="testi-card${t.featured ? ' featured' : ''}">
+        <span class="testi-quote-icon">"</span>
+        <div class="testi-stars">${stars}</div>
+        <p class="testi-text">"${t.text}"</p>
+        <div class="testi-method-tag">${t.methodIcon} ${t.method}</div>
+        <div class="testi-author">
+          ${avatarHtml}
+          <div>
+            <div class="testi-name">${t.name}</div>
+            <div class="testi-role">${t.role}</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Determine visible cards count
+  function getVisible() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+  }
+
+  let current = 0;
+  let visible = getVisible();
+  const total = sorted.length;
+
+  function maxIndex() { return Math.max(0, total - visible); }
+
+  // Render dots
+  function renderDots() {
+    if (!dotsEl) return;
+    const pages = maxIndex() + 1;
+    dotsEl.innerHTML = Array.from({ length: pages }, (_, i) =>
+      `<button class="testi-dot${i === current ? ' active' : ''}" onclick="testiGoTo(${i})" aria-label="Slide ${i+1}"></button>`
+    ).join('');
+  }
+
+  window.testiGoTo = function(idx) {
+    current = Math.max(0, Math.min(idx, maxIndex()));
+    const cardW = track.children[0]?.offsetWidth + 20 || 0;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    renderDots();
+    if (btnPrev) btnPrev.disabled = current === 0;
+    if (btnNext) btnNext.disabled = current >= maxIndex();
+  };
+
+  if (btnPrev) btnPrev.addEventListener('click', () => testiGoTo(current - 1));
+  if (btnNext) btnNext.addEventListener('click', () => testiGoTo(current + 1));
+
+  // Auto-play
+  let autoplay = setInterval(() => {
+    testiGoTo(current >= maxIndex() ? 0 : current + 1);
+  }, 4500);
+
+  track.addEventListener('mouseenter', () => clearInterval(autoplay));
+  track.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => testiGoTo(current >= maxIndex() ? 0 : current + 1), 4500);
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) testiGoTo(diff > 0 ? current + 1 : current - 1);
+  });
+
+  // Responsive resize
+  window.addEventListener('resize', () => {
+    const newVis = getVisible();
+    if (newVis !== visible) {
+      visible = newVis;
+      current = 0;
+      testiGoTo(0);
+    }
+    renderDots();
+  });
+
+  testiGoTo(0);
+  renderDots();
+}
+
+// Init testimonials on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  initTestimonials();
+});
